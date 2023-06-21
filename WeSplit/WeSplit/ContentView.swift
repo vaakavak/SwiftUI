@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View {
         Form {
-            ForEach (0..<100) { number in
-                Text("Строка \(number)")
+            ForEach (0..<100) {
+                Text("Строка \($0)")
                 
             }
         }
