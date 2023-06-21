@@ -8,28 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var count = 0
+    
     var body: some View {
-        Form {
-            Group{
-                Text("Hello, world!")
-                Text("Hello, world!")
-                Text("Hello, world!")
-                Text("Hello, world!")
-            }
-            Group {
-                Text("Hello, world!")
-                Text("Hello, world!")
-                Text("Hello, world!")
-                Text("Hello, world!")
-            }
-            Section {
-                Text("Hello, world!")
-                Text("Hello, world!")
-                Text("Hello, world!")
-                Text("Hello, world!")
-            }
-            }
-        .padding()
+        Text("Вы нажали \(count) раз")
+        Button("ТЫк"){
+            count += 1
+        }
     }
 }
 
