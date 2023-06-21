@@ -12,11 +12,11 @@ struct ContentView: View {
    @State var counter = 0
     
     var body: some View {
-        VStack {
-            Text("Состояние \(counter)")
-            Button("Увеличить состояние") {
-                counter += 1
-            }
+        NavigationView {
+            NavigationLink("Click",
+                           destination: ChildView(counter: $counter))
+            .padding()
+            .background(Color.black)
         }
     }
 }
