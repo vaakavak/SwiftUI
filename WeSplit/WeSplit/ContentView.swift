@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var count = 0
+    @State private var name = ""
     
     var body: some View {
-        Text("Вы нажали \(count) раз")
-        Button("ТЫк"){
-            count += 1
+        Form {
+            TextField("Введите ваше имя", text: $name)
+            Text("Ваше имя \(name)")
         }
     }
 }
