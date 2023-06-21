@@ -13,8 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         Form {
-            TextField("Введите ваше имя", text: $name)
-            Text("Ваше имя \(name)")
+            ForEach (0..<100) { number in
+                Text("Строка \(number)")
+                
+            }
         }
     }
 }
