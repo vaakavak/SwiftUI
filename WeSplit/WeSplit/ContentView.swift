@@ -49,11 +49,11 @@ struct ContentView: View {
                 }
                 Section {
                     Picker("Кол-во чаевых в %", selection: $tipPercentage) {
-                        ForEach(tipPercentages, id: \.self) {
+                        ForEach(0..<101) {
                             Text(($0), format: .percent) //percent - преобразуем в проценты
                         }
                     }
-                    .pickerStyle(.segmented)
+//                    .pickerStyle(.segmented)
                 }
             header: {
                     Text("Выберите процент чевых")
