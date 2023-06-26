@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var checkAmount = 0.0
     @State private  var numberOfPeople = 2
     @State private var tipPercentage = 20
+    @FocusState private var amountIsFocused: Bool
     
     let tipPercentages = [0, 5, 10, 15, 20, 25, 30]
     
@@ -30,7 +31,9 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("Сумма чека", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                        .keyboardType(.decimalPad)
+                        .keyboardType(.decimalPad) //модификатор тип клавиатуры
+                        .focused($amountIsFocused)
+                    
                     Picker("Количество людей", selection: $numberOfPeople) {
                         ForEach (2..<100) {
                             Text("\($0)  человек")
@@ -49,10 +52,18 @@ struct ContentView: View {
                     Text("Выберите процент чевых")
                 }
                 Section {
-                    Text(checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                 }
             }
             .navigationTitle("WeSplit")
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) { //ToolbarItemGroup - группа элементов панели инструментов, внутри размещаем нашу кнопку и говорим что кнопка должна быть на клавиатуре
+                    Spacer() //сдвигает кнопку к правому краю
+                    Button("Done") { //говорим что есть кнопка готова
+                        amountIsFocused = false //при нажатии на кнопку нужно закрыть ее, применить значение false
+                    }
+                }
+            }
         }
     }
 }
