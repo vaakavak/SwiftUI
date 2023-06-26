@@ -15,6 +15,15 @@ struct ContentView: View {
     
     let tipPercentages = [0, 5, 10, 15, 20, 25, 30]
     
+    var totalPerPerson: Double {                        //Расчитывает общую сумму на одного человека
+        let peopleCount = Double(numberOfPeople + 2)    // прводим людей к десятичному значению, и добавляем 2 еденицы, чтобы соответствовать пикеру
+        let tipSelection = Double(tipPercentage)        //приводим проценты к десятичному значению
+        let tipValue = checkAmount / 100 * tipSelection //рассчитываем проценты
+        let grandTotal = checkAmount + tipValue         // общая сумма + чаевые
+        let amountPerPerson = grandTotal / peopleCount  //сумма на одного человека
+        return amountPerPerson
+    }
+    
     
     var body: some View {
         NavigationView {
