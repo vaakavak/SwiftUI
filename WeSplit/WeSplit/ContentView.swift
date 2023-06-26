@@ -56,8 +56,8 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("WeSplit")
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) { //ToolbarItemGroup - группа элементов панели инструментов, внутри размещаем нашу кнопку и говорим что кнопка должна быть на клавиатуре
+            .toolbar { //Модификатор позволяет указывать элементы панели инструментов для представления.
+                ToolbarItemGroup(placement: .keyboard) { //ToolbarItemGroup - позволяет нам разместить одну или несколько кнопок в определенном месте. placement: .keyboard - указываем, что нам нужна панель инструментов keyboard – панель инструментов, которая прикреплена к клавиатуре.
                     Spacer() //сдвигает кнопку к правому краю
                     Button("Done") { //говорим что есть кнопка готова
                         amountIsFocused = false //при нажатии на кнопку нужно закрыть ее, применить значение false
