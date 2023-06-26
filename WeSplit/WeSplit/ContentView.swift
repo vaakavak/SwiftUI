@@ -53,7 +53,7 @@ struct ContentView: View {
                             Text(($0), format: .percent) //percent - преобразуем в проценты
                         }
                     }
-//                    .pickerStyle(.segmented)
+                    .pickerStyle(.navigationLink)
                 }
             header: {
                     Text("Выберите процент чевых")
