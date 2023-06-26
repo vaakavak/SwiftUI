@@ -31,7 +31,7 @@ struct ContentView: View {
             Form {
                 Section {
                     TextField("Сумма чека", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                        .keyboardType(.decimalPad) //модификатор тип клавиатуры
+                        .keyboardType(.decimalPad) //модификатор типa клавиатуры
                         .focused($amountIsFocused)
                     
                     Picker("Количество людей", selection: $numberOfPeople) {
