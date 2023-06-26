@@ -54,6 +54,9 @@ struct ContentView: View {
                 Section {
                     Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
                 }
+            header: {
+                Text("Сумма начеловека")
+            }
             }
             .navigationTitle("WeSplit")
             .toolbar { //Модификатор позволяет указывать элементы панели инструментов для представления.
