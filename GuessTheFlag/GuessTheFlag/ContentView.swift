@@ -17,24 +17,47 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.blue
+            RadialGradient(stops: [
+                .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
+                .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3),
+            ], center: .top, startRadius: 200, endRadius: 400)
                 .ignoresSafeArea()
             
-            VStack(spacing: 30) {
+            VStack (spacing: 45) {
+                Text("Угадайте флаг")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.white)
+                
                 VStack {
-                    Text("Выберите правильный флаг")
-                        .foregroundColor(.white)
-                    Text(countries[correctAnswer])
-                        .foregroundColor(.white)
-                }
-                ForEach (0..<3) { number in
-                    Button {
-                        flagTapped(number)
-                    } label: {
-                        Image(countries[number])
-                            .renderingMode(.original)
+                    VStack {
+                        Spacer()
+                        Text("Выберите правильный флаг")
+                            .foregroundStyle(.secondary)
+                            .font(.subheadline.weight(.bold))
+                            
+                        Text(countries[correctAnswer])
+                            .font(.largeTitle.weight(.semibold))
+                    }
+                    ForEach (0..<3) { number in
+                        Button {
+                            flagTapped(number)
+                        } label: {
+                            Image(countries[number])
+                                .renderingMode(.original)
+                                .cornerRadius(15)
+                            .shadow(radius: 5)                    }
                     }
                 }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 20)
+                .background(.thinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+                Spacer()
+                Spacer()
+                Text("Счет: ???")
+                    .font(.title.bold())
+                    .foregroundColor(.white)
+                Spacer()
             }
         }
         .alert(scoreTitle, isPresented: $showingScore) {
