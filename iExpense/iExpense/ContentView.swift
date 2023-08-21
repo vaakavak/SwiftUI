@@ -7,22 +7,30 @@
 
 import SwiftUI
 
-class User: ObservableObject {
-    @Published var firstName = "Bilbo"
-    @Published var lastName = "Baggins"
-}
-
 struct ContentView: View {
-    @StateObject private var user = User()
+    @StateObject var expenses = Expenses()
     
     var body: some View {
-        VStack {
-            Text("Your name is \(user.firstName) \(user.lastName)")
-            
-            TextField("First name", text: $user.firstName)
-            TextField("Last name", text: $user.lastName)
+        NavigationView {
+            List {
+                ForEach(expenses.items, id: \.name) { item in
+                    Text(item.name)
+                }
+                .onDelete(perform: removeItems)
+            }
+            .navigationTitle("iExpense")
+            .toolbar {
+                Button {
+                    let expense = ExpenseItem(name: "TEst", type: "Personal", amount: 5)
+                    expenses.items.append(expense)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
         }
-        .padding()
+    }
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
     }
 }
 
