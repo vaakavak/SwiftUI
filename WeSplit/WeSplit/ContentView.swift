@@ -60,7 +60,9 @@ struct ContentView: View {
                 }
                 Section {
                     Text(amountOfTheCheck, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                        .foregroundColor(tipPercentage == 0 ? .red : .black)
                 }
+                
             header: {
              Text("Общая сумма чека")
             }
