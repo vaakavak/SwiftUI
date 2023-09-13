@@ -7,12 +7,24 @@
 
 import SwiftUI
 
+struct CustomText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text)
+    }
+        init(_ text: String) {
+            print("Creating a new Custotext")
+            self.text = text
+        }
+}
+
 struct ContentView: View {
     var body: some View {
         ScrollView {
             VStack (spacing: 30) {
                 ForEach(0..<100) {
-                    Text("Item \($0)")
+                    CustomText("Item \($0)")
                         .font(.title)
                 }
             }
