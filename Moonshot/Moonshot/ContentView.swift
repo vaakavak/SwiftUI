@@ -8,17 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+       
+    let astronauts = Bundle.main.decode("astronauts.json")
+    
     var body: some View {
-        NavigationStack{
-            List(0..<100) {row in
-                NavigationLink {
-                    Text("Detail \(row)")
-                } label: {
-                    Text("Row \(row)")
-                }
-            }
-            .navigationTitle("SwiftUI")
-        }
+        Text("\(astronauts.count)") //словарь успешно загружен
     }
 }
 
